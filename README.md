@@ -1,4 +1,4 @@
-[![Gem Version](https://badge.fury.io/rb/tabled.svg)](https://badge.fury.io/rb/tabled) ![CI is pasing for ruby 2.6 - 3.0](https://github.com/rukomoynikov/tabled/actions/workflows/linters/badge.svg)
+[![Gem Version](https://badge.fury.io/rb/tabled.svg)](https://badge.fury.io/rb/tabled) ![CI is pasing for ruby 2.6 - 3.0](https://github.com/rukomoynikov/tabled/actions/workflows/linters.yml/badge.svg)
 
 
 # Description

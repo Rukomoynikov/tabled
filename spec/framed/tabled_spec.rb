@@ -3,7 +3,7 @@ require 'tabled'
 require 'byebug'
 
 describe Tabled do
-  context 'without frame' do
+  context 'framed' do
 
     it "returns correct columns width" do
       expect(Tabled.new(Factories::IncomingData.raw).columns_width).to eq([13, 4, 63])

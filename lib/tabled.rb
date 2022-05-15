@@ -1,8 +1,8 @@
 require 'byebug'
-require 'template'
+require_relative './template'
 
 class Tabled
-  DEFAULT_OPTIONS = { borders: false }
+  DEFAULT_OPTIONS = { framed: true, row_separator: '-', spaces_after_value: 1 }
   attr_accessor :data, :columns_width, :content, :options
 
   def initialize(data, **options)
@@ -43,13 +43,49 @@ class Tabled
       }
     end
 
-    self.columns_width = columns_width.map { |column_width| column_width + 1 }
+    self.columns_width = columns_width.map { |column_width| column_width + @options[:spaces_after_value] }
   end
 
   def prepare_content
-    self.content = data.inject([]) { |enumerator, row|
-      enumerator << Tabled::Template::Row.render(row, columns_width, options)
-      enumerator << Tabled::Template::RowFooter.render(row)
-    }.compact
+    self.content =
+      data
+        .inject([]) { |enumerator, row|
+          enumerator << Tabled::Template::Row.render(row, columns_width, @options[:framed])
+          enumerator << Tabled::Template::RowFooter.render(row, columns_width, @options[:framed])
+
+          #  Row separator
+          unless @options[:row_separator].nil?
+            enumerator << @options[:row_separator].to_s * row_length
+          end
+
+          enumerator
+        }
+        .compact
+        .inject([]) { |enumerator, row|
+          # For a row separator all symbols are the same
+          row_is_separator = row.split('').uniq.size == 1
+          if row_is_separator && !@options[:row_separator].nil?
+            enumerator << (@options[:row_separator] * 2) + row + @options[:row_separator]
+          elsif !@options[:framed]
+            enumerator << row
+          else
+            enumerator << ('| ' if @options[:framed]) + row + ('|' if @options[:framed])
+          end
+
+          enumerator
+        }
+
+    #  Top and bottom borders
+    if (@options[:framed])
+      self.content = [
+        '-' * (row_length + 3),
+        @options[:row_separator] ? self.content[0..-2] : self.content,
+        '-' * (row_length + 3)
+      ].flatten
+    end
+  end
+
+  def row_length
+    @row_length ||= columns_width.sum
   end
 end

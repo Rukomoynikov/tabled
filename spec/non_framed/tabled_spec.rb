@@ -3,26 +3,31 @@ require 'tabled'
 require 'byebug'
 
 describe Tabled do
-  let (:raw_data) { Factories::Data.raw }
-  let(:raw_data_after_tabled) { Factories::Data.raw_after_tabled }
-
-  describe ".columns_width" do
+  context 'without frame' do
     it "returns correct columns width" do
-      expect(Tabled.new(raw_data).columns_width).to eq([13, 4, 63])
+      expect(Tabled.new(Factories::IncomingData.raw, framed: false).columns_width).to eq([13, 4, 63])
     end
-  end
 
-  describe ".content" do
-    it "returns list of strings accordingly to given data" do
-      expect(Tabled.new(raw_data).content).to eq(raw_data_after_tabled)
-    end
-  end
-
-  describe ".print_to_console" do
     it "prints table to console" do
-      message = raw_data_after_tabled.join("\n")
+      message = Factories::ProcessedData.with_default_row_separator.join("\n")
 
-      expect { Tabled.new(raw_data).print_to_console }.to output(message).to_stdout
+      expect { Tabled.new(Factories::IncomingData.raw, framed: false).print_to_console }.to output(message).to_stdout
+    end
+
+    context 'with default separator' do
+      it "returns list of strings accordingly to given data" do
+        expect(Tabled.new(Factories::IncomingData.raw, framed: false).content).to eq(Factories::ProcessedData.with_default_row_separator)
+      end
+    end
+
+    context 'with empty separator' do
+      it "returns list of strings accordingly to given data" do
+        expect(
+          Tabled.new(Factories::IncomingData.raw, row_separator: nil, framed: false
+        ).content).to eq(
+          Factories::ProcessedData.without_row_separator
+        )
+      end
     end
   end
 end

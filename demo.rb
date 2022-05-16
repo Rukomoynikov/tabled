@@ -111,6 +111,28 @@ data = STAR_WARS_CHARACTERS.map { |character|
 
 Tabled.new(data).print_to_console
 
+# ---------------------------------
+# | Luke Skywalker     172 male   |
+#   ---------------------------------
+# | C-3PO              167 n/a    |
+#   ---------------------------------
+# | R2-D2              96  n/a    |
+#   ---------------------------------
+# | Darth Vader        202 male   |
+#   ---------------------------------
+# | Leia Organa        150 female |
+#   ---------------------------------
+# | Owen Lars          178 male   |
+#   ---------------------------------
+# | Beru Whitesun lars 165 female |
+#   ---------------------------------
+# | R5-D4              97  n/a    |
+#   ---------------------------------
+# | Biggs Darklighter  183 male   |
+#   ---------------------------------
+# | Obi-Wan Kenobi     182 male   |
+#   ---------------------------------
+
 print "\n\n############################\n\n"
 print "Printing without frame: \n"
 
@@ -120,6 +142,27 @@ data = STAR_WARS_CHARACTERS.map { |character|
 
 Tabled.new(data, framed: false).print_to_console
 
+# Luke Skywalker     172 male
+# ---------------------------------
+# C-3PO              167 n/a
+# ---------------------------------
+# R2-D2              96  n/a
+# ---------------------------------
+# Darth Vader        202 male
+# ---------------------------------
+# Leia Organa        150 female
+# ---------------------------------
+# Owen Lars          178 male
+# ---------------------------------
+# Beru Whitesun lars 165 female
+# ---------------------------------
+# R5-D4              97  n/a
+# ---------------------------------
+# Biggs Darklighter  183 male
+# ---------------------------------
+# Obi-Wan Kenobi     182 male
+# ---------------------------------
+
 print "\n\n############################\n\n"
 print "Printing without frame: and row separator\n"
 
@@ -128,3 +171,14 @@ data = STAR_WARS_CHARACTERS.map { |character|
 }
 
 Tabled.new(data, framed: false, row_separator: nil).print_to_console
+
+# Luke Skywalker     172 male
+# C-3PO              167 n/a
+# R2-D2              96  n/a
+# Darth Vader        202 male
+# Leia Organa        150 female
+# Owen Lars          178 male
+# Beru Whitesun lars 165 female
+# R5-D4              97  n/a
+# Biggs Darklighter  183 male
+# Obi-Wan Kenobi     182 male

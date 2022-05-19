@@ -11,7 +11,14 @@ class Tabled
     end
 
     def shape
-      content =
+      content = []
+
+      unless options[:titles].empty?
+        content << Tabled::Template::Titles.render(options[:titles], columns_width, options[:framed])
+        content << (options[:row_separator].to_s * row_length) unless options[:row_separator].nil?
+      end
+
+      content.concat(
         data
         .each_with_object([]) do |row, enumerator|
           enumerator << Tabled::Template::Row.render(row, columns_width, options[:framed])
@@ -21,6 +28,7 @@ class Tabled
           enumerator << (options[:row_separator].to_s * row_length) unless options[:row_separator].nil?
         end
         .compact
+      )
 
       content = add_left_and_right_borders(content)
       add_top_bottom_borders(content)

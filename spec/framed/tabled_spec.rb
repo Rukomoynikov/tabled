@@ -30,6 +30,21 @@ describe Tabled do
       end
     end
 
+    context 'with titles' do
+      it 'returns list of strings accordingly to given data' do
+        tabled_with_titles = described_class.new(
+          Factories::IncomingData.raw,
+          titles: ['Cop name', 'Amount of warnings', 'Over the limit']
+        )
+        
+        expect(
+          tabled_with_titles.content
+        ).to match_array(
+         Factories::ProcessedData.with_titles
+       )
+      end
+    end
+
     it 'prints table to console' do
       message = Factories::ProcessedData.framed_default_row_separator.join("\n")
 

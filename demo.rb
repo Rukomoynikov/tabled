@@ -172,7 +172,7 @@ data = STAR_WARS_CHARACTERS.map do |character|
   [character[:name], character[:height], character[:gender]]
 end
 
-Tabled.new(data, framed: false, row_separator: nil).print_to_console
+Tabled.new(data, titles: ['Name', 'Height', 'Gender']).print_to_console
 
 # Luke Skywalker     172 male
 # C-3PO              167 n/a

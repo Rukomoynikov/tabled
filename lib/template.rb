@@ -11,6 +11,15 @@ class Tabled
       end
     end
 
+    class Titles
+      def self.render(row, columns_width, _is_framed)
+        row.map.with_index do |column, index|
+          spaces = ' ' * (columns_width[index] - column.to_s.size)
+          column.to_s + spaces
+        end.join
+      end
+    end
+
     class RowFooter
       def self.render(row, columns_width, _is_framed)
         return nil unless row.last.fetch(:footer, false)

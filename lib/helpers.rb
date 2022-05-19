@@ -3,7 +3,7 @@
 class Tabled
   class Helpers
     # Calculates columns size
-    def self.calculate_columns_width(data)
+    def self.calculate_columns_width(data:, options:)
       columns_width = []
 
       data.each do |row|
@@ -19,6 +19,14 @@ class Tabled
         end
       end
 
+      # If titles longer than data use titles column width
+      columns_width.each_with_index do |column_size, index|
+        title_size = options[:titles].fetch(index, '').size
+
+        columns_width[index] = title_size > columns_width[index] ?  title_size : columns_width[index]
+      end
+
+      # Add 1 space in the end of each column
       columns_width.map { |column_width| column_width + 1 }
     end
 

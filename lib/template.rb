@@ -3,6 +3,7 @@
 class Tabled
   class Template
     class Row
+      # | Luke Skywalker     172    male   |
       def self.render(row, columns_width, _is_framed)
         row[0..-2].map.with_index do |column, index|
           spaces = ' ' * (columns_width[index] - column.to_s.size)
@@ -12,6 +13,9 @@ class Tabled
     end
 
     class Titles
+      # ------------------------------------
+      # | Name               Height Gender |
+      # ------------------------------------
       def self.render(row, columns_width, _is_framed)
         row.map.with_index do |column, index|
           spaces = ' ' * (columns_width[index] - column.to_s.size)

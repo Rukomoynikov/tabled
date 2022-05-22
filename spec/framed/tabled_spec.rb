@@ -7,7 +7,7 @@ require 'byebug'
 describe Tabled do
   context 'when framed' do
     it 'returns correct columns width' do
-      expect(described_class.new(Factories::IncomingData.raw).columns_width).to eq([13, 4, 63])
+      expect(described_class.new(Factories::IncomingData.raw).columns_width).to eq([13, 4, 46])
     end
 
     context 'with default separator' do
@@ -36,12 +36,12 @@ describe Tabled do
           Factories::IncomingData.raw,
           titles: ['Cop name', 'Amount of warnings', 'Over the limit']
         )
-        
+
         expect(
           tabled_with_titles.content
         ).to match_array(
-         Factories::ProcessedData.with_titles
-       )
+          Factories::ProcessedData.with_titles
+        )
       end
     end
 

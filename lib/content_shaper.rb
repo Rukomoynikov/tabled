@@ -44,7 +44,7 @@ class Tabled
       content.each_with_object([]) do |row, enumerator|
         # For a row separator all symbols are the same
         row_is_separator = row.chars.uniq.size == 1
-        enumerator << if row_is_separator && !options[:row_separator].nil?
+        enumerator << if row_is_separator && !options[:row_separator].nil? && options[:framed]
                         (options[:row_separator] * 2) + row + options[:row_separator]
                       elsif !options[:framed]
                         row

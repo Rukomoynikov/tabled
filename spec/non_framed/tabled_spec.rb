@@ -7,7 +7,7 @@ require 'byebug'
 describe Tabled do
   context 'without frame' do
     it 'returns correct columns width' do
-      expect(described_class.new(Factories::IncomingData.raw, framed: false).columns_width).to eq([13, 4, 63])
+      expect(described_class.new(Factories::IncomingData.raw, framed: false).columns_width).to eq([13, 4, 46])
     end
 
     it 'prints table to console' do

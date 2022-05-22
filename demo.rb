@@ -169,10 +169,10 @@ print "\n\n############################\n\n"
 print "Printing without frame: and row separator\n"
 
 data = STAR_WARS_CHARACTERS.map do |character|
-  [character[:name], character[:height], character[:gender]]
+  [character[:name], character[:height], character[:gender], { footer: 'One very long footer! Be carefull' }]
 end
 
-Tabled.new(data, titles: ['Name', 'Height', 'Gender']).print_to_console
+Tabled.new(data, titles: %w[Name Height Gender]).print_to_console
 
 # Luke Skywalker     172 male
 # C-3PO              167 n/a

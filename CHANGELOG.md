@@ -1,3 +1,7 @@
+### Version 0.0.3 (May 23, 2022)
+1. Printing titles of columns
+2. Fixing layout (amount of spaces for row separators)
+
 ### Version 0.0.2 (May 16, 2022)
 1. Rendering footers of rows
 2. Adding optional frame to tables

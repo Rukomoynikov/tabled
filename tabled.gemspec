@@ -2,9 +2,9 @@
 
 Gem::Specification.new do |s|
   s.name        = 'tabled'
-  s.version     = '0.0.2'
+  s.version     = '0.0.3'
   s.summary     = 'Library for rendering pretty tables in console'
-  s.description = "This library can be used to render your data to a console. It's quite simple and has many features"
+  s.description = "Library can be used to render your data to a console. Though it's quite simple, but has many features."
   s.authors     = ['Max Rukomoynikov']
   s.email       = 'rukomoynikov@gmail.com'
   s.files =

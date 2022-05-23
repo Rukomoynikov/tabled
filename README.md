@@ -2,7 +2,7 @@
 
 
 # Description
-This library can be used to render your data to a console. Though it's quite simple, but has many features. 
+Library can be used to render your data to a console. Though it's quite simple, but has many features. 
 
 # How to use
 1. Install the gem `bundle add tabled` or `gem install tabled`
@@ -14,6 +14,7 @@ Tabled accepts two params. Data which is prohibited and options.
 Available options:
 1. `framed` - optional, default is true
 2. `row_separator` - optional, default is `-`. Can be `nil` if you don't need separate rows.
+3. `titles` - optional parameter with list of columns titles
 
 More examples in [demo.rb](./demo.rb)
 

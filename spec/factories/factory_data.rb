@@ -15,6 +15,28 @@ class Factories
   end
 
   class ProcessedData
+    class Framed
+      class << self
+        def star_wars_list
+          ['------------------------------',
+           '| name           height mass |',
+           '------------------------------',
+           '| Luke Skywalker 172     11  |',
+           '------------------------------',
+           '| C-3PO          167    75   |',
+           '------------------------------',
+           '| R2-D2          96     32   |',
+           '------------------------------',
+           '| Darth Vader    202    136  |',
+           '------------------------------',
+           '| Leia Organa    150    49   |',
+           '------------------------------',
+           '| Owen Lars      178    120  |',
+           '------------------------------'].join("\n")
+        end
+      end
+    end
+
     class << self
       def without_row_separator
         [

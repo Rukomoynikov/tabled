@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'tabled'
 
 describe Tabled do

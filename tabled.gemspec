@@ -2,11 +2,12 @@
 
 Gem::Specification.new do |s|
   s.name        = 'tabled'
-  s.version     = '0.0.3'
+  s.version     = '0.0.4'
   s.summary     = 'Library for rendering pretty tables in console'
-  s.description = "Library can be used to render your data to a console. Though it's quite simple, but has many features."
+  s.description = 'Library can be used to render your data to a console. Being quite simple it has many features.'
   s.authors     = ['Max Rukomoynikov']
   s.email       = 'rukomoynikov@gmail.com'
+  s.executables << 'tabled'
   s.files =
     Dir.chdir(File.expand_path(__dir__)) do
       `git ls-files -z`.split("\x0").reject { |f| f.match(%r{\A(?:test|spec|features)/}) }
@@ -15,6 +16,8 @@ Gem::Specification.new do |s|
   s.metadata    = { 'source_code_uri' => 'https://github.com/Rukomoynikov/tabled',
                     'rubygems_mfa_required' => 'true' }
   s.license = 'MIT'
+
+  s.add_dependency 'dry-cli'
 
   s.add_development_dependency 'byebug'
   s.add_development_dependency 'rspec'

@@ -1,8 +1,5 @@
 # frozen_string_literal: true
-
-require 'spec_helper'
 require 'tabled'
-require 'byebug'
 
 describe Tabled do
   context 'without frame' do

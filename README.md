@@ -1,3 +1,4 @@
+
 [![Gem Version](https://badge.fury.io/rb/tabled.svg)](https://badge.fury.io/rb/tabled) ![CI is pasing for ruby 2.6 - 3.0](https://github.com/rukomoynikov/tabled/actions/workflows/linters.yml/badge.svg) ![Downloads](https://badgen.net/rubygems/dt/tabled)
 
 
@@ -56,6 +57,12 @@ Result
 | Legendary assassin John Wick (Keanu Reeves).                 |
 | Alan   23 years Male                                         |
 ----------------------------------------------------------------
+```
+
+# Printing CSV files to console
+As a part of the gem `tabled` binary is included. So, you can basicaly run it like:
+```shell
+tabled print path_to_csv_file
 ```
 
 # Contributing

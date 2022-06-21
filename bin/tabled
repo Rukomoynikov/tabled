@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/tabled'
+require_relative '../lib/parsers/csv_parser'
+require 'dry/cli'
+require 'pathname'
+
+module TabledCli
+  module CLI
+    module Commands
+      extend Dry::CLI::Registry
+
+      class Print < Dry::CLI::Command
+        desc 'Printing CSV to console'
+
+        argument :input, desc: 'Input file to print'
+
+        def call(input: nil, **)
+          return p 'File must be provided' if input.nil?
+          return p 'File doesn\'t exist' unless File.exist?(Pathname.new(input))
+
+          Tabled.new(Tabled::CSVParser.parse(Pathname.new(input))).print_to_console
+        end
+      end
+
+      register 'print', Print, aliases: ['p', '-p', '--print']
+    end
+  end
+end
+
+Dry::CLI.new(TabledCli::CLI::Commands).call

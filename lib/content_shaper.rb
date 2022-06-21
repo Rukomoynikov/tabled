@@ -41,15 +41,16 @@ class Tabled
     end
 
     def add_left_and_right_borders(content)
+      return content unless options[:framed]
+
       content.each_with_object([]) do |row, enumerator|
         # For a row separator all symbols are the same
         row_is_separator = row.chars.uniq.size == 1
-        enumerator << if row_is_separator && !options[:row_separator].nil? && options[:framed]
+
+        enumerator << if row_is_separator && !options[:row_separator].nil?
                         (options[:row_separator] * 2) + row + options[:row_separator]
-                      elsif !options[:framed]
-                        row
                       else
-                        ('| ' if options[:framed]) + row + ('|' if options[:framed])
+                        "| #{row}|"
                       end
       end
     end

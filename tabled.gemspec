@@ -17,7 +17,6 @@ Gem::Specification.new do |s|
   s.license = 'MIT'
 
   s.add_development_dependency 'byebug'
-  s.add_development_dependency 'jeweler'
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'rubocop-rspec'

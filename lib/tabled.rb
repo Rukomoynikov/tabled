@@ -3,10 +3,13 @@
 require_relative './template'
 require_relative './helpers'
 require_relative './content_shaper'
+require_relative './file_builders/base_file_builder'
 
 class Tabled
+  include BaseFileBuilder
+
   DEFAULT_OPTIONS = { framed: true, row_separator: '-', titles: [] }.freeze
-  attr_accessor :data, :columns_width, :content, :options
+  attr_accessor :data, :data_without_options, :columns_width, :content, :options
 
   def initialize(data, **options)
     @options = DEFAULT_OPTIONS.merge(options)

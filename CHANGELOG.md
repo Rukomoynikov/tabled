@@ -1,3 +1,6 @@
+### Version 0.0.6 (September 05, 2023)
+1. Tabled now can export data into CSV and JSON files
+
 ### Version 0.0.5 (September 04, 2023)
 1. (Bug fix) Unnecessary dev gem reference removed
 

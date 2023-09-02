@@ -3,7 +3,7 @@
 
 
 # Description
-Library can be used to render your data to a console. Though it's quite simple, but has many features. 
+Library can be used to render your data to a console. Though it's quite simple, but has many features.
 
 # How to use
 1. Install the gem `bundle add tabled` or `gem install tabled`
@@ -11,7 +11,7 @@ Library can be used to render your data to a console. Though it's quite simple, 
 3. Pass to the application array of rows. Each row may have any amount of columns and optional footer text.
 
 ### Params for Tabled instance
-Tabled accepts two params. Data which is prohibited and options.   
+Tabled accepts two params. Data which is prohibited and options.
 Available options:
 1. `framed` - optional, default is true
 2. `row_separator` - optional, default is `-`. Can be `nil` if you don't need separate rows.
@@ -27,7 +27,7 @@ data = [
   ["Alan", "23 years", "Male"],
 ]
 
-Tabled.new(data, framed: false, 
+Tabled.new(data, framed: false,
            row_separator: nil).print_to_console
 ```
 
@@ -57,6 +57,29 @@ Result
 | Legendary assassin John Wick (Keanu Reeves).                 |
 | Alan   23 years Male                                         |
 ----------------------------------------------------------------
+```
+
+### Export data to CSV or JSON file
+Passed data can be exported as a file. Available formats are `csv` and `json`. Both parameters are optional. By default, file will be saved in the current directory and with file name `tabled.csv` and file format is `CSV`.
+
+```ruby
+# CSV
+data = [
+  ["Helena", "20 years", "Female"],
+]
+
+Tabled
+  .new(data)
+  .export_to_csv
+
+# JSON
+data = [
+  ["Helena", "20 years", "Female"],
+]
+
+Tabled
+  .new(data, titles: ['Name', 'Age', 'Gender'])
+  .export_to_csv(format: :json)
 ```
 
 # Printing CSV files to console

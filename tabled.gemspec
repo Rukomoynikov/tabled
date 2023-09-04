@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name        = 'tabled'
-  s.version     = '0.0.4'
+  s.version     = '0.0.5'
   s.summary     = 'Library for rendering pretty tables in console'
   s.description = 'Library can be used to render your data to a console. Being quite simple it has many features.'
   s.authors     = ['Max Rukomoynikov']

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'byebug'
 require_relative './template'
 require_relative './helpers'
 require_relative './content_shaper'

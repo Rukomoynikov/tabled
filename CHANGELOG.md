@@ -1,3 +1,6 @@
+### Version 0.0.5 (September 04, 2023)
+1. (Bug fix) Unnecessary dev gem reference removed
+
 ### Version 0.0.3 (May 23, 2022)
 1. Printing titles of columns
 2. Fixing layout (amount of spaces for row separators)

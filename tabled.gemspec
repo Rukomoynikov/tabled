@@ -17,8 +17,7 @@ Gem::Specification.new do |s|
                     'rubygems_mfa_required' => 'true' }
   s.license = 'MIT'
 
-  s.add_dependency 'dry-cli'
-
+  s.add_dependency 'dry-cli' # For CLI ap
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'rubocop-rspec'

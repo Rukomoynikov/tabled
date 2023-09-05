@@ -14,7 +14,7 @@ module FileBuilders
     end
 
     def export_to_file
-      return puts 'For JSON format titles are required' if titles.size.zero?
+      return puts 'For JSON format titles are required' if titles.empty?
 
       json_data = data.inject([]) do |result, row|
         result << titles.zip(row).to_h

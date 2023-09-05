@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './lib/tabled'
+require_relative 'lib/tabled'
 
 STAR_WARS_CHARACTERS = [
   {

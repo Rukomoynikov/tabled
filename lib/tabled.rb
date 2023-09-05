@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require_relative './template'
-require_relative './helpers'
-require_relative './content_shaper'
-require_relative './file_builders/base_file_builder'
+require_relative 'template'
+require_relative 'helpers'
+require_relative 'content_shaper'
+require_relative 'file_builders/base_file_builder'
 
 class Tabled
   include BaseFileBuilder

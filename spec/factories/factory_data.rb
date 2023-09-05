@@ -11,6 +11,12 @@ class Factories
           ['ClassLength', 46, '(7098.0 over the limit)']
         ]
       end
+
+      def raw_with_rainbow
+        [
+          ['MethodLength', "\e[31m379\e[0m", '(5682.0 over the limit)']
+        ]
+      end
     end
   end
 

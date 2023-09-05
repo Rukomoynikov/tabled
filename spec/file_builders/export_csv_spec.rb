@@ -7,7 +7,7 @@ describe 'Export data to CSV file', type: :aruba do
 
   context 'when no format provided or format is CSV' do
     after do
-      File.delete('test.csv') if File.exist?('test.csv')
+      FileUtils.rm_f('test.csv')
     end
 
     it 'creates correct file in the current dirrectory' do

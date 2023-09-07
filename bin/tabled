@@ -19,6 +19,7 @@ module TabledCli
         def call(input: nil, **)
           return p 'File must be provided' if input.nil?
           return p 'File doesn\'t exist' unless File.exist?(Pathname.new(input))
+          return p 'Unsupported file format' unless File.extname(input).downcase == '.csv'
 
           Tabled.new(Tabled::CSVParser.parse(Pathname.new(input))).print_to_console
         end

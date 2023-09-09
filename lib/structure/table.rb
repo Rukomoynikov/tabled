@@ -24,7 +24,7 @@ class Structure
     end
 
     def cells_max_widths
-
+      @cells_max_widths ||= rows.map(&:cells_max_widths).transpose.map(&:max)
     end
 
     private

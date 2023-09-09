@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tabled
   class ConsolePrinter
     attr_reader :table, :options

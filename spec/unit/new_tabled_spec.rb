@@ -18,6 +18,17 @@ describe Tabled do
     end
   end
 
+  describe 'cells max widths' do
+    it 'returns correct cells max widths' do
+      expected_cells_max_widths = [12, 3, 23]
+
+      calculated_cells_max_widths = described_class.new(Factories::IncomingData.raw, framed: false,
+                                                                                     titles: %w[Name Description Price]).table.cells_max_widths
+
+      expect(calculated_cells_max_widths).to eq(expected_cells_max_widths)
+    end
+  end
+
   context 'when invalid data is passed' do
     it 'raises an error when data is not an Array' do
       expect do

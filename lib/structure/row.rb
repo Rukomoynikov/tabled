@@ -22,5 +22,9 @@ class Structure
     def width
       @width ||= [row_options[:footer].size, cells.map(&:width).sum].max
     end
+
+    def cells_max_widths
+      @cells_max_widths ||= cells.map(&:width)
+    end
   end
 end

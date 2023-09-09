@@ -21,13 +21,13 @@ describe Tabled do
   context 'when invalid data is passed' do
     it 'raises an error when data is not an Array' do
       expect do
-        Structure::Table.new('not_an_array')
+        Structure::Table.new(data: 'not_an_array', table_options: {})
       end.to raise_error(ArgumentError, 'Data must be an Array')
     end
 
     it 'raises an error when data is not an Array of Arrays' do
       expect do
-        Structure::Table.new([['valid_row'], 'invalid_row'])
+        Structure::Table.new(data: [['valid_row'], 'invalid_row'], table_options: {})
       end.to raise_error(ArgumentError, 'Each row must be an Array')
     end
   end

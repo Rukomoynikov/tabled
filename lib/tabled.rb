@@ -3,7 +3,8 @@
 require_relative 'template'
 require_relative 'helpers'
 require_relative 'content_shaper'
-require_relative 'parse_content'
+require_relative 'structure/table'
+require_relative 'console_printer'
 require_relative 'file_builders/base_file_builder'
 
 class Tabled
@@ -14,13 +15,16 @@ class Tabled
 
   def initialize(data, **options)
     @options = DEFAULT_OPTIONS.merge(options)
-    @table = Tabled::ParseContent.new(data, @options)
+    @table = Structure::Table.new(data: data, table_options: @options)
+    @console_printer = Tabled::ConsolePrinter.new(@table, @options)
+
     @data = Tabled::Helpers.convert_to_required_structure(data)
     @columns_width = Tabled::Helpers.calculate_columns_width(data: data, options: @options)
     @content = Tabled::ContentShaper.new(data, @columns_width, @options).shape
   end
 
   def print_to_console
+    # @console_printer.print
     print content.join("\n")
   end
 end

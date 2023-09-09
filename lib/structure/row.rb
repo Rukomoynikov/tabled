@@ -8,12 +8,13 @@ class Structure
 
     DEFAULT_ROW_OPTIONS = { footer: '' }.freeze
 
-    # @param raw_row [Array] Array of Strings
-    # @param row_options [Hash] Hash of options
-    def initialize(raw_row:, row_options:)
-      @row_options = DEFAULT_ROW_OPTIONS.merge(row_options)
+    def initialize(raw_row:)
+      @row_options = raw_row.last.is_a?(Hash) ? raw_row.last : {}
+      @row_options = DEFAULT_ROW_OPTIONS.merge(@row_options)
 
-      @cells = raw_row.map do |raw_cell|
+      @row_data = raw_row.last.is_a?(Hash) ? raw_row[0..-2] : raw_row
+
+      @cells = @row_data.map do |raw_cell|
         Structure::Cell.new(raw_cell: raw_cell)
       end
     end

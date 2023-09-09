@@ -15,15 +15,16 @@ class Structure
       @rows = data.map do |raw_row|
         raise ArgumentError, 'Each row must be an Array' unless raw_row.is_a?(Array)
 
-        rows_options = raw_row.last.is_a?(Hash) ? raw_row.last : {}
-        row_data = raw_row.last.is_a?(Hash) ? raw_row[0..-2] : raw_row
-
-        ::Structure::Row.new(raw_row: row_data, row_options: rows_options)
+        ::Structure::Row.new(raw_row: raw_row)
       end
     end
 
     def rows_width
       @rows_width ||= titles_width + rows.map(&:width)
+    end
+
+    def cells_max_widths
+
     end
 
     private

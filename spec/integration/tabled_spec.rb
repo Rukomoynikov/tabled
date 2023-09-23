@@ -7,6 +7,8 @@ describe Tabled do
     it 'prints table to console' do
       message = Factories::ProcessedData.with_default_row_separator.join("\n")
 
+      byebug
+
       expect do
         described_class.new(Factories::IncomingData.raw, framed: false).print_to_console
       end.to output(message).to_stdout

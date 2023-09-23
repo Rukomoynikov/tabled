@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 describe Tabled do
   describe 'rows widths' do
     it 'returns correct rows width' do
@@ -26,6 +25,15 @@ describe Tabled do
                                                                                      titles: %w[Name Description Price]).table.cells_max_widths
 
       expect(calculated_cells_max_widths).to eq(expected_cells_max_widths)
+    end
+  end
+
+  describe 'console content' do
+    it 'returns correct console content' do
+      tabled_instance = calculated_cells_max_widths = described_class.new(Factories::IncomingData.raw, framed: false,
+                                                                 titles: %w[Name Description Price])
+
+      expect(" (0.0 over the limit)   ").to eq(tabled_instance.table.rows[1].cells[2].console_content)
     end
   end
 

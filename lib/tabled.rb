@@ -16,7 +16,7 @@ class Tabled
   def initialize(data, **options)
     @options = DEFAULT_OPTIONS.merge(options)
     @table = Structure::Table.new(data: data, table_options: @options)
-    @console_printer = Tabled::ConsolePrinter.new(@table, @options)
+    @console_printer = Tabled::ConsolePrinter.new(table: @table, table_options: @options)
 
     @data = Tabled::Helpers.convert_to_required_structure(data)
     @columns_width = Tabled::Helpers.calculate_columns_width(data: data, options: @options)
@@ -24,7 +24,6 @@ class Tabled
   end
 
   def print_to_console
-    # @console_printer.print
-    print content.join("\n")
+    $stdout << @console_printer.print
   end
 end

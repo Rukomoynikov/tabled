@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 describe Tabled do
   describe 'rows widths' do
     it 'returns correct rows width' do
@@ -18,16 +17,36 @@ describe Tabled do
     end
   end
 
+  describe 'cells max widths' do
+    it 'returns correct cells max widths' do
+      expected_cells_max_widths = [12, 3, 23]
+
+      calculated_cells_max_widths = described_class.new(Factories::IncomingData.raw, framed: false,
+                                                                                     titles: %w[Name Description Price]).table.cells_max_widths
+
+      expect(calculated_cells_max_widths).to eq(expected_cells_max_widths)
+    end
+  end
+
+  describe 'console content' do
+    it 'returns correct console content' do
+      tabled_instance = calculated_cells_max_widths = described_class.new(Factories::IncomingData.raw, framed: false,
+                                                                 titles: %w[Name Description Price])
+
+      expect(" (0.0 over the limit)   ").to eq(tabled_instance.table.rows[1].cells[2].console_content)
+    end
+  end
+
   context 'when invalid data is passed' do
     it 'raises an error when data is not an Array' do
       expect do
-        Structure::Table.new('not_an_array')
+        Structure::Table.new(data: 'not_an_array', table_options: {})
       end.to raise_error(ArgumentError, 'Data must be an Array')
     end
 
     it 'raises an error when data is not an Array of Arrays' do
       expect do
-        Structure::Table.new([['valid_row'], 'invalid_row'])
+        Structure::Table.new(data: [['valid_row'], 'invalid_row'], table_options: {})
       end.to raise_error(ArgumentError, 'Each row must be an Array')
     end
   end

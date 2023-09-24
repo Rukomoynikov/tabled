@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tabled (1.0.0)
+    tabled (1.1.0)
       dry-cli
 
 GEM

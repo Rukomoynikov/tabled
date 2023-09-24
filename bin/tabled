@@ -3,6 +3,7 @@
 
 require_relative '../lib/tabled'
 require_relative '../lib/parsers/csv_parser'
+require_relative '../lib/parsers/json_parser'
 require 'dry/cli'
 require 'pathname'
 
@@ -19,13 +20,34 @@ module TabledCli
         def call(input: nil, **)
           return p 'File must be provided' if input.nil?
           return p 'File doesn\'t exist' unless File.exist?(Pathname.new(input))
-          return p 'Unsupported file format' unless File.extname(input).downcase == '.csv'
+          return p 'Unsupported file format' unless %w[.csv .json].include?(File.extname(Pathname.new(input)).downcase)
 
-          Tabled.new(Tabled::CSVParser.parse(Pathname.new(input))).print_to_console
+          file = Pathname.new(input)
+
+          $stdout << case File.extname(file).downcase
+                     when '.csv'
+                       print_csv(file)
+                     when '.json'
+                       print_json(file)
+                     end
+        end
+
+        def print_csv(input)
+          Tabled
+            .new(Tabled::CSVParser.parse(Pathname.new(input)))
+            .print_to_console
+        end
+
+        def print_json(input)
+          titles, values = Tabled::JSONParser.parse(Pathname.new(input))
+
+          Tabled
+            .new(values, titles: titles)
+            .print_to_console
         end
       end
 
-      register 'print', Print, aliases: ['p', '-p', '--print']
+      register 'print', Print, aliases: %w[p -p --print]
     end
   end
 end

@@ -1,25 +1,46 @@
+# Tabled
 
 [![Gem Version](https://badge.fury.io/rb/tabled.svg)](https://badge.fury.io/rb/tabled) ![CI is pasing for ruby 2.6 - 3.0](https://github.com/rukomoynikov/tabled/actions/workflows/linters.yml/badge.svg) ![Downloads](https://badgen.net/rubygems/dt/tabled)
 
+Tabled is a versatile gem designed for rendering tabular data in a console. It offers various features to make data presentation simple and customizable.
 
-# Description
-Library can be used to render your data to a console. Though it's quite simple, but has many features.
+## Table of Contents
 
-# How to use
-1. Install the gem `bundle add tabled` or `gem install tabled`
-2. Add to the application `require 'tabled''`
-3. Pass to the application array of rows. Each row may have any amount of columns and optional footer text.
+- [Installation](#installation)
+- [Usage](#usage)
+- [Options](#options)
+- [Examples](#examples)
+- [Exporting Data](#exporting-data)
+- [Printing CSV or JSON Files](#printing-csv-or-json-files)
+- [Contributing](#contributing)
 
-### Params for Tabled instance
-Tabled accepts two params. Data which is prohibited and options.
-Available options:
-1. `framed` - optional, default is true
-2. `row_separator` - optional, default is `-`. Can be `nil` if you don't need separate rows.
-3. `titles` - optional parameter with list of columns titles
+## Installation
+```shell
+bundle add tabled
+# or
+gem install tabled
+```
 
-More examples in [demo.rb](./demo.rb)
+## Usage
+To use Tabled in your application, follow these steps:
+1. Require the gem in your code:
+   ```ruby
+   require 'tabled'
+   ```
+2. Pass an array of rows to the application. Each row can contain any number of columns and optional footer text.
 
-### Simple data structure
+## Options
+Tabled accepts the following options:
+
+- `framed` (optional, default: true): Specify if the output should have frames.
+- `row_separator` (optional, default: "-"): Set the character for row separators or set it to nil if you don't want to separate rows.
+- `titles` (optional): Provide a list of column titles.
+
+## Examples
+Here are some examples to help you get started:
+
+### Simple Data Structure
+
 ```ruby
 data = [
   ["Helena", "20 years", "Female"],
@@ -27,18 +48,11 @@ data = [
   ["Alan", "23 years", "Male"],
 ]
 
-Tabled.new(data, framed: false,
-           row_separator: nil).print_to_console
+Tabled.new(data, framed: false, row_separator: nil).print_to_console
 ```
 
-Result
-```shell
-Helena  20 years  Female
-John    18 years  Male
-Alan    23 years  Male
-```
+### Using Footer Inside a Row
 
-### Using footer inside a row
 ```ruby
 data = [
   ["Helena", "20 years", "Female"],
@@ -49,43 +63,27 @@ data = [
 Tabled.new(data, row_separator: nil).print_to_console
 ```
 
-Result
-```shell
-----------------------------------------------------------------
-| Helena 20 years Female                                       |
-| John   18 years Male                                         |
-| Legendary assassin John Wick (Keanu Reeves).                 |
-| Alan   23 years Male                                         |
-----------------------------------------------------------------
-```
+## Exporting Data
 
-### Export data to CSV or JSON file
-Passed data can be exported as a file. Available formats are `csv` and `json`. Both parameters are optional. By default, file will be saved in the current directory and with file name `tabled.csv` and file format is `CSV`.
+You can export the data in CSV or JSON formats. By default, the file is saved in the current directory with the file name "tabled.csv" (CSV format).
 
 ```ruby
-# CSV
-data = [
-  ["Helena", "20 years", "Female"],
-]
+# Export to CSV
+Tabled.new(data).export_to_file
 
-Tabled
-  .new(data)
-  .export_to_csv
+# Export to JSON
+Tabled.new(data, titles: ['Name', 'Age', 'Gender']).export_to_file(format: :json)
 
-# JSON
-data = [
-  ["Helena", "20 years", "Female"],
-]
-
-Tabled
-  .new(data, titles: ['Name', 'Age', 'Gender'])
-  .export_to_csv(format: :json)
+# Customize file name
+Tabled.new(data, titles: ['Name', 'Age', 'Gender']).export_to_file(file_name: 'my_file.json')
 ```
 
-# Printing CSV files to console
-As a part of the gem `tabled` binary is included. So, you can basicaly run it like:
+## Printing CSV or JSON Files
+
+As part of the gem, the *tabled* binary is included. You can run it like this:
+
 ```shell
-tabled print path_to_csv_file
+tabled print path_to_[csv|json]_file
 ```
 
 # Contributing

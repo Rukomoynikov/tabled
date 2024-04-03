@@ -2,15 +2,14 @@ name: CodeMetrics report sending
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 permissions:
   contents: read
 
 jobs:
-
   report_sending:
     runs-on: ubuntu-latest
     steps:
@@ -21,4 +20,7 @@ jobs:
           ruby-version: 3.0
           bundler-cache: true
 
-      - run: sh ./sending_report.sh
+      - name: Codemetrics sending report
+        env:
+          CODEMETRICS_TOKEN: ${{ secrets.CODEMETRICS_TOKEN }}
+        uses: Rukomoynikov/codemetrics-gh-action@main

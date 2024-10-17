@@ -4,6 +4,7 @@ require_relative 'template'
 require_relative 'helpers'
 require_relative 'content_shaper'
 require_relative 'file_builders/base_file_builder'
+require_relative 'errors/format_error'
 
 class Tabled
   include BaseFileBuilder
@@ -20,5 +21,11 @@ class Tabled
 
   def print_to_console
     print content.join("\n")
+  end
+
+  def self.from_csv(csv:, **options)
+    raise Tabled::FormatError.new(received_format: csv.class) unless csv.is_a? CSV::Table
+
+    new(csv.to_a, **options)
   end
 end

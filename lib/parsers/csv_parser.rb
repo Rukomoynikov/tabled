@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'csv'
+
 class Tabled
   class CSVParser
     def self.parse(file_path)

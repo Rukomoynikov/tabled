@@ -1,0 +1,10 @@
+services:
+  app:
+    build:
+      dockerfile_inline: |
+        FROM ruby:bullseye
+        COPY Gemfile Gemfile.lock tabled.gemspec .
+        RUN bundle install
+    working_dir: /app
+    volumes:
+      - ./:/app

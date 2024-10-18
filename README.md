@@ -63,6 +63,18 @@ data = [
 Tabled.new(data, row_separator: nil).print_to_console
 ```
 
+### Print Ruby CSV records
+
+```ruby
+csv = CSV.parse(<<~ROWS, headers: true)
+  Bob,Engineering,1000
+  Jane,Sales,2000
+  John,Management,5000
+ROWS
+
+Tabled.from_csv(csv: csv, framed: true).print_to_console
+```
+
 ## Exporting Data
 
 You can export the data in CSV or JSON formats. By default, the file is saved in the current directory with the file name "tabled.csv" (CSV format).

@@ -5,7 +5,7 @@ PATH
       dry-cli
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     ast (2.4.2)
     base64 (0.1.1)
@@ -24,7 +24,7 @@ GEM
     racc (1.7.1)
     rainbow (3.1.1)
     regexp_parser (2.8.1)
-    rexml (3.2.6)
+    rexml (3.3.8)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
       rspec-expectations (~> 3.12.0)

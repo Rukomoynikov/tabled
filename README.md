@@ -49,6 +49,10 @@ data = [
 ]
 
 Tabled.new(data, framed: false, row_separator: nil).print_to_console
+
+Helena 20 years Female
+John   18 years Male
+Alan   23 years Male
 ```
 
 ### Using Footer Inside a Row
@@ -61,6 +65,11 @@ data = [
 ]
 
 Tabled.new(data, row_separator: nil).print_to_console
+
+| Helena 20 years Female                       |
+| John   18 years Male                         |
+| Legendary assassin John Wick (Keanu Reeves). |
+| Alan   23 years Male                         |
 ```
 
 ### Print Ruby CSV records
@@ -73,6 +82,13 @@ csv = CSV.parse(<<~ROWS, headers: true)
 ROWS
 
 Tabled.from_csv(csv: csv, framed: true).print_to_console
+
+| Bob  Engineering 1000 |
+-------------------------
+| Jane Sales       2000 |
+-------------------------
+| John Management  5000 |
+-------------------------
 ```
 
 ## Exporting Data
